@@ -16,59 +16,45 @@
 #include <vector>
 #include <list>
 
-// print container values from begin to end
-template <typename ContainerType>
-void	printContainer(const ContainerType &container){
-	typename ContainerType::const_iterator it = container.begin();
-	typename ContainerType::const_iterator ite = container.end();
 
-	while (it != ite){
-		std::cout << *it << " ";
-		++it;
-	}
-	std::cout << std::endl;
-}
+int	main(){
+    std::vector<int> vectorContainer;
 
-int	main(void){
-	try{
-		std::vector<int> numbers;
+    vectorContainer.push_back(10);
+    vectorContainer.push_back(20);
+    vectorContainer.push_back(30);
 
-		numbers.push_back(10);
-		numbers.push_back(20);
-		numbers.push_back(30);
-		numbers.push_back(40);
+	std::cout  << "--- Success | vector container --- " << std::endl;
+	std::vector<int>::iterator vectorIt = easyfind(vectorContainer, 20);
+    if (vectorIt != vectorContainer.end())
+        std::cout << "Found in vector: " << *vectorIt << std::endl;
+    else
+		std::cout << "Not found in vector" << std::endl;
 
-		std::cout << "vector contents: ";
-		printContainer(numbers);
+	std::cout  << "--- Failure | vector container --- " << std::endl;
+	vectorIt = easyfind(vectorContainer, 40);
+    if (vectorIt != vectorContainer.end())
+        std::cout << "Found: " << *vectorIt << std::endl;
+    else
+		std::cout << "Not found in vector" << std::endl;
 
-		std::vector<int>::iterator found = easyfind(numbers, 30);
-		std::cout << "found in vector: " << *found << std::endl;
+	std::list<int> listContainer;
 
-		easyfind(numbers, 99);
-	}
-	catch (const std::exception &e){
-		std::cout << e.what() << std::endl;
-	}
-
-	std::cout << std::endl;
-
-	try{
-		std::list<int> values;
-
-		values.push_back(5);
-		values.push_back(15);
-		values.push_back(25);
-		values.push_back(35);
-
-		std::cout << "list contents: ";
-		printContainer(values);
-
-		std::list<int>::iterator found = easyfind(values, 15);
-		std::cout << "found in list: " << *found << std::endl;
-
-		easyfind(values, -1);
-	}
-	catch (const std::exception &e){
-		std::cout << e.what() << std::endl;
-	}
+    listContainer.push_back(1);
+    listContainer.push_back(2);
+    listContainer.push_back(3);
+	
+	std::cout << "--- Success | list container --- " << std::endl;
+    std::list<int>::iterator listIt = easyfind(listContainer, 3);
+    if (listIt != listContainer.end())
+        std::cout << "Found in list: " << *listIt << std::endl;
+    else
+		std::cout << "Not found in list" << std::endl;
+	
+	std::cout << "--- Failure | list container --- " << std::endl;
+    listIt = easyfind(listContainer, 4);
+    if (listIt != listContainer.end())
+        std::cout << "Found in list: " << *listIt << std::endl;
+    else
+        std::cout << "Not found in list" << std::endl;
 }

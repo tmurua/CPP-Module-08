@@ -14,29 +14,14 @@
 #define EASYFIND_HPP
 
 #include <algorithm>	// std::find
-#include <stdexcept>	// std::runtime_error
 
-// template function to find first occurrence of targetValue inside a container
-// assumes container stores ints and supports begin() / end()
+// template function to find first occurrence of value inside an int container
 template <typename T>
-typename T::iterator	easyfind(T &container, int targetValue){
-	typename T::iterator it;
+typename T::iterator easyfind(T& container, int value){
+	typename T::iterator foundIt;
 
-	it = std::find(container.begin(), container.end(), targetValue);
-	if (it == container.end())
-		throw std::runtime_error("Error: value not found in container");
-	return (it);
-}
-
-// const overload so easyfind also works with const containers
-template <typename T>
-typename T::const_iterator	easyfind(const T &container, int targetValue){
-	typename T::const_iterator it;
-
-	it = std::find(container.begin(), container.end(), targetValue);
-	if (it == container.end())
-		throw std::runtime_error("Error: value not found in container");
-	return (it);
+	foundIt = std::find(container.begin(), container.end(), value);
+	return (foundIt);
 }
 
 #endif
