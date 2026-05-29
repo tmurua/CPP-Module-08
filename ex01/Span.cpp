@@ -45,12 +45,16 @@ int Span::shortestSpan() const{
 	std::vector<int> sortedNumbers = _numbers;
 	std::sort(sortedNumbers.begin(), sortedNumbers.end());
 
-	int shortest = sortedNumbers[1] - sortedNumbers[0];
+	int shortest = sortedNumbers[1] - sortedNumbers[0]; // first span
 
-	for (std::size_t i = 1; i < sortedNumbers.size() - 1; i++){
-		int currentSpan = sortedNumbers[i + 1] - sortedNumbers[i];
+	std::size_t i = 1;
+	while (i < sortedNumbers.size() - 1){
+		int currentSpan;
+
+		currentSpan = sortedNumbers[i + 1] - sortedNumbers[i];
 		if (currentSpan < shortest)
 			shortest = currentSpan;
+		i++;
 	}
 	return (shortest);
 }
