@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 16:33:07 by tmurua            #+#    #+#             */
-/*   Updated: 2026/05/28 01:10:43 by tmurua           ###   ########.fr       */
+/*   Updated: 2026/05/30 01:10:43 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void Span::addNumber(int number){
 	_numbers.push_back(number);
 }
 
-// shortest span = smallest difference between 2 stored numbers
+// shortest span = smallest difference between 2 stored numbers; sort first
 int Span::shortestSpan() const{
 	if (_numbers.size() < 2)
 		throw std::runtime_error("Error: not enough numbers to find a span");
